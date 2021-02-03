@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
 import styled  from 'styled-components';
 type OtherDataWrapperType = {
-    menuHeight?: any
+    menuHeight?: any;
+    top?:any;
 }
 export const DropdownMenuStyle=styled.div<OtherDataWrapperType>`
   position: absolute;
-  top: 58px;
+  top: ${(props:any)=>props.top ? props.top : '58px'} ;
   width: 300px;
   height:${(props:any)=>props.menuHeight? props.menuHeight : ''};
    transform: ${(props:any)=> props.transformEnd ? 'translateX(-45%)' :'' }; 
@@ -20,7 +22,7 @@ export const MenuItemContainer=styled('div')`
 width: 100%;
 `;
 
-export const MenuItem=styled('a')`
+export const MenuItem=styled(Link)`
 height: 50px;
 display: flex;
 align-items: center;

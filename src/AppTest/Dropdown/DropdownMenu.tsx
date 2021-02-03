@@ -19,7 +19,10 @@ import { ReactComponent as BoltIcon } from '../../icons/bolt.svg';
 
 import { CSSTransition } from 'react-transition-group';
 import DropdownItem from './DropdownItem';
-import { DropdownMenuStyle } from './DropdownMenu.element';
+import { DropdownMenuStyle, MenuItemContainer } from './DropdownMenu.element';
+import { BrowserRouter, Route } from 'react-router-dom';
+import App from '../../App';
+import Home from '../../components/Home';
 interface DropdownProps{
     children?:any;
     leftIcon?:any;
@@ -43,14 +46,16 @@ const DropdownMenu=({children,leftIcon,rightIcon}:DropdownProps)=>{
 
     }
   return (
-    <DropdownMenuStyle menuHeight={menuHeight} ref={dropdownRef}>
+     
+    <DropdownMenuStyle top="10px" menuHeight={menuHeight} ref={dropdownRef}>
+
        <CSSTransition
         in={activeMenu === 'main'}
         timeout={500}
         classNames="menu-primary"
         unmountOnExit
         onEnter={calcHeight}>
-        <div className="menu">
+        <MenuItemContainer>
           <DropdownItem setAtciveMenu={setActiveMenu}>My Profile</DropdownItem>
           <DropdownItem
           setAtciveMenu={setActiveMenu}
@@ -67,7 +72,7 @@ const DropdownMenu=({children,leftIcon,rightIcon}:DropdownProps)=>{
             Animals
           </DropdownItem>
 
-        </div>
+        </MenuItemContainer>
       </CSSTransition>
 
       <CSSTransition
@@ -76,15 +81,15 @@ const DropdownMenu=({children,leftIcon,rightIcon}:DropdownProps)=>{
         classNames="menu-secondary"
         unmountOnExit
         onEnter={calcHeight}>
-        <div className="menu">
+        <MenuItemContainer>
           <DropdownItem  setAtciveMenu={setActiveMenu} goToMenu="main" leftIcon={<ArrowIcon />}>
             <h2>My Tutorial</h2>
           </DropdownItem>
-          <DropdownItem setAtciveMenu={setActiveMenu}  leftIcon={<BoltIcon />}>HTML</DropdownItem>
+          <DropdownItem path="/home" setAtciveMenu={setActiveMenu}  leftIcon={<BoltIcon />}>HTML</DropdownItem>
           <DropdownItem setAtciveMenu={setActiveMenu} leftIcon={<BoltIcon />}>CSS</DropdownItem>
           <DropdownItem setAtciveMenu={setActiveMenu} leftIcon={<BoltIcon />}>JavaScript</DropdownItem>
           <DropdownItem goToMenu="test" setAtciveMenu={setActiveMenu} leftIcon={<BoltIcon />}>Awesome!</DropdownItem>
-        </div>
+        </MenuItemContainer>
       </CSSTransition>
 
       <CSSTransition
@@ -93,7 +98,7 @@ const DropdownMenu=({children,leftIcon,rightIcon}:DropdownProps)=>{
         classNames="menu-secondary"
         unmountOnExit
         onEnter={calcHeight}>
-        <div className="menu">
+        <MenuItemContainer>
           <DropdownItem setAtciveMenu={setActiveMenu}  goToMenu="main" leftIcon={<ArrowIcon />}>
             <h2>Animals</h2>
           </DropdownItem>
@@ -101,16 +106,16 @@ const DropdownMenu=({children,leftIcon,rightIcon}:DropdownProps)=>{
           <DropdownItem  setAtciveMenu={setActiveMenu} leftIcon="🐸">Frog</DropdownItem>
           <DropdownItem  setAtciveMenu={setActiveMenu} leftIcon="🦋">Horse?</DropdownItem>
           <DropdownItem  setAtciveMenu={setActiveMenu} leftIcon="🦔">Hedgehog</DropdownItem>
-        </div>
+        </MenuItemContainer>
       </CSSTransition>
 
       <CSSTransition
         in={activeMenu === 'test'}
-        timeout={500}
+        timeout={5000}
         classNames="menu-third"
         unmountOnExit
         onEnter={calcHeight}>
-        <div className="menu">
+        <MenuItemContainer>
           <DropdownItem setAtciveMenu={setActiveMenu}  goToMenu="settings" leftIcon={<ArrowIcon />}>
             <h2>test</h2>
           </DropdownItem>
@@ -118,9 +123,10 @@ const DropdownMenu=({children,leftIcon,rightIcon}:DropdownProps)=>{
           <DropdownItem  setAtciveMenu={setActiveMenu} leftIcon="🐸">test</DropdownItem>
           <DropdownItem  setAtciveMenu={setActiveMenu} leftIcon="🦋">test?</DropdownItem>
           <DropdownItem  setAtciveMenu={setActiveMenu} leftIcon="🦔">test</DropdownItem>
-        </div>
+        </MenuItemContainer>
       </CSSTransition>
      </DropdownMenuStyle>
+
   )
 
 }

@@ -19,6 +19,8 @@ import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
 //const ArrowIcon = require("./icons/arrow.svg") ;
 import { ReactComponent as BoltIcon } from './icons/bolt.svg';
 import DropdownMenu2 from './AppTest/Dropdown/DropdownMenu';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Home from './components/Home';
 
 //const BoltIcon = require("./icons/bolt.svg") ;
 
@@ -26,6 +28,9 @@ import DropdownMenu2 from './AppTest/Dropdown/DropdownMenu';
 function App() {
   return (
     <>
+     <BrowserRouter>
+      
+      
     <Navbar>
       <NavItem icon={<PlusIcon />} />
       <NavItem icon={<BellIcon />} />
@@ -36,6 +41,9 @@ function App() {
       </NavItem>
     </Navbar>
     <DropdownMenu2></DropdownMenu2>
+
+    <Route path='/home' exact component={Home} />
+    </BrowserRouter>
 
    </>
   );

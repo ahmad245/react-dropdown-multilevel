@@ -5,11 +5,12 @@ interface DropdownItemProps{
     leftIcon?:any;
     rightIcon?:any;
     goToMenu?:any;
-    setAtciveMenu?:(val:string)=>void
+    setAtciveMenu?:(val:string)=>void;
+    path?:string
 }
-const DropdownItemMenu=({children,leftIcon,rightIcon,goToMenu,setAtciveMenu}:DropdownItemProps)=>{
+const DropdownItemMenu=({children,leftIcon,rightIcon,goToMenu,setAtciveMenu,path='#'}:DropdownItemProps)=>{
   return (
-      <MenuItem onClick={()=> goToMenu && setAtciveMenu && setAtciveMenu(goToMenu)} >
+      <MenuItem to={path} onClick={()=> goToMenu && setAtciveMenu && setAtciveMenu(goToMenu)} >
         <MenuItemIcon className="icon-button">{leftIcon}</MenuItemIcon>
          {children}
         <MenuItemIcon className="icon-right">{rightIcon}</MenuItemIcon>

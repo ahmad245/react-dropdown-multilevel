@@ -165,19 +165,41 @@ a {
 
 
 .menu-third-enter {
-  transform: translateX(110%);
-  transition: transform 10000ms ease;
+  position: absolute;
+  transform: translateY(110%);
+  
 }
 .menu-third-enter-active {
   transform: translateX(0%);
-  transition: transform 5000ms ease;
-  transition-delay: 500ms;
+  transition: all var(--speed) ease;
+
+
 }
 .menu-third-exit {
-
+  position: absolute;
 }
 .menu-third-exit-active {
   transform: translateX(110%);
-  transition: all 500ms ease;
+  transition: all var(--speed) ease;
+ 
+}
+
+
+.menu-forth-enter {
+  position: absolute;
+  transform: translateX(110%);
+
+}
+.menu-forth-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+
+}
+.menu-forth-exit {
+  position: absolute;
+}
+.menu-forth-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
  
 }
